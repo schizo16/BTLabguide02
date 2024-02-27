@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    
+}
+
+
+<div class="row">
+    <div class="col-md-2">
+        <div class="card">
+            <div class="card-header custom-header">
+                Danh mục
+            </div>
+            <ul class="list-group list-group-flush">
+                @foreach (var categoryViewModel in Model)
+                {
+                    <li class="list-group-item">
+                        <a asp-action="Category" asp-route-id="@categoryViewModel.Category.Id" class="category-button">@categoryViewModel.Category.Name</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    
+    <div class="col-md-8">
+        <div class="card-header" style="font-size: 1.5em;">Danh sách sản phẩm</div>
+        <div class="row">
+            @foreach (var categoryViewModel in Model)
+            {
+                foreach (var product in categoryViewModel.Products)
+                {
+                    <div class="col-md-4">
+                        <div class="img-thumbnail">
+                        <div class="card">
+                            <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name">
+                            <div class="card-body">
+                                <h5 class="card-title">@product.Name</h5>
+                                <p class="card-text" style="text-decoration:line-through">Giá gốc: @product.Price $</p>
+                                <p class="card-text">Giá sale: @product.SalePrice $</p>
+                                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@product.Id">Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+

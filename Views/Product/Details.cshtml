@@ -1,0 +1,17 @@
+﻿@model BTLabguide02.Models.Product
+
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+}
+
+<h1>@Model.Name</h1>
+<img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid mb-3" />
+<p><strong>Giá gốc:</strong> @Model.Price.ToString("C")</p>
+<p><strong>Giá sale:</strong> @Model.SalePrice.ToString("C")</p>
+<p><strong>Danh mục:</strong> @Model.CategoryId</p>
+<p><strong>Mô tả:</strong> @Model.Description</p>
+<p><strong>Trạng thái:</strong> @Model.Status</p>
+<p><strong>Ngày tạo:</strong> @Model.CreatedAt.ToString("dd/MM/yyyy")</p>
+
+<a asp-action="Index" class="btn btn-primary">Quay lại</a>
+
